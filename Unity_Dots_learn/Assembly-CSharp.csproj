@@ -63,8 +63,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Component\LevelComponent.cs" />
+    <Compile Include="Assets\Scripts\Component\MoveSpeedComponent.cs" />
     <Compile Include="Assets\Scripts\Mono\TestECSMono.cs" />
     <Compile Include="Assets\Scripts\System\LevelUpSystem.cs" />
+    <Compile Include="Assets\Scripts\System\MoveSystem.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity2019.4.0/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

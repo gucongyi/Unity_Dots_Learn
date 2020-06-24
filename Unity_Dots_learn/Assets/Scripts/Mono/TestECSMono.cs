@@ -37,19 +37,26 @@ public class TestECSMono : MonoBehaviour
         EntityArchetype entityArchetype = entityManager.CreateArchetype(
             typeof(LevelComponent), 
             typeof(Translation),
+            //以下5个为渲染组件
             typeof(RenderMesh),
             typeof(LocalToWorld),
             typeof(RenderBounds),
             typeof(WorldRenderBounds),
-            typeof(ChunkWorldRenderBounds)
+            typeof(ChunkWorldRenderBounds),
+            //以上5个为渲染组件
+            typeof(MoveSpeedComponent)
             );
-        NativeArray<Entity> entityArray = new NativeArray<Entity>(2, Allocator.Temp);
+        NativeArray<Entity> entityArray = new NativeArray<Entity>(1000, Allocator.Temp);
         //根据原型填充entityArray
         entityManager.CreateEntity(entityArchetype,entityArray);
         for (int i = 0; i < entityArray.Length; i++)
         {
             Entity entity = entityArray[i];
             entityManager.SetComponentData(entity, new LevelComponent{ level = Random.Range(10,20) });
+            entityManager.SetComponentData(entity, new MoveSpeedComponent { speed = Random.Range(1, 2) });
+            entityManager.SetComponentData(entity, new Translation {
+                Value = new Unity.Mathematics.float3(Random.Range(-8f,8f),Random.Range(-5f,5f),0f)
+            });
             entityManager.SetSharedComponentData(entity, new RenderMesh{
                 mesh = mesh,
                 material = material
