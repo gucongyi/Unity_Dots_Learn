@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Transforms;
+using Unity.Collections;
 
 public class TestECSMono : MonoBehaviour
 {
@@ -16,13 +17,28 @@ public class TestECSMono : MonoBehaviour
         ////添加对应组件
         //entityManager.AddComponent<LevelComponent>(entity);
 
-        //2.原型方式创建Entity
-        EntityArchetype entityArchetype = entityManager.CreateArchetype(typeof(LevelComponent), typeof(Translation));
-        Entity entity = entityManager.CreateEntity(entityArchetype);
-        entityManager.SetName(entity, "levelEntity");
+        ////2.原型方式创建Entity
+        //EntityArchetype entityArchetype = entityManager.CreateArchetype(typeof(LevelComponent), typeof(Translation));
+        //Entity entity = entityManager.CreateEntity(entityArchetype);
+        //entityManager.SetName(entity, "levelEntity");
 
-        //给entity的对应组件赋值
-        entityManager.SetComponentData(entity,new LevelComponent() { level=10});
-        entityManager.SetComponentData(entity, new Translation() { Value = new Unity.Mathematics.float3(1f,2f,3f)});
+
+
+        ////给entity的对应组件赋值
+        //entityManager.SetComponentData(entity,new LevelComponent() { level=10});
+        //entityManager.SetComponentData(entity, new Translation() { Value = new Unity.Mathematics.float3(1f,2f,3f)});
+
+        //3.NativeArray方式创建EntityArray
+        EntityArchetype entityArchetype = entityManager.CreateArchetype(typeof(LevelComponent), typeof(Translation));
+        NativeArray<Entity> entityArray = new NativeArray<Entity>(2, Allocator.Temp);
+        //根据原型填充entityArray
+        entityManager.CreateEntity(entityArchetype,entityArray);
+        for (int i = 0; i < entityArray.Length; i++)
+        {
+            Entity entity = entityArray[i];
+            entityManager.SetComponentData(entity, new LevelComponent() { level = 10 });
+        }
+        //要自己释放
+        entityArray.Dispose();
     }
 }
