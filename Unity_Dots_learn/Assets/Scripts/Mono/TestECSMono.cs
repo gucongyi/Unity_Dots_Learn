@@ -4,9 +4,14 @@ using UnityEngine;
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Collections;
+using Unity.Rendering;
 
 public class TestECSMono : MonoBehaviour
 {
+    [SerializeField]
+    private Mesh mesh;
+    [SerializeField]
+    private Material material;
     void Start()
     {
         //创建Entity
@@ -29,14 +34,26 @@ public class TestECSMono : MonoBehaviour
         //entityManager.SetComponentData(entity, new Translation() { Value = new Unity.Mathematics.float3(1f,2f,3f)});
 
         //3.NativeArray方式创建EntityArray
-        EntityArchetype entityArchetype = entityManager.CreateArchetype(typeof(LevelComponent), typeof(Translation));
+        EntityArchetype entityArchetype = entityManager.CreateArchetype(
+            typeof(LevelComponent), 
+            typeof(Translation),
+            typeof(RenderMesh),
+            typeof(LocalToWorld),
+            typeof(RenderBounds),
+            typeof(WorldRenderBounds),
+            typeof(ChunkWorldRenderBounds)
+            );
         NativeArray<Entity> entityArray = new NativeArray<Entity>(2, Allocator.Temp);
         //根据原型填充entityArray
         entityManager.CreateEntity(entityArchetype,entityArray);
         for (int i = 0; i < entityArray.Length; i++)
         {
             Entity entity = entityArray[i];
-            entityManager.SetComponentData(entity, new LevelComponent() { level = 10 });
+            entityManager.SetComponentData(entity, new LevelComponent{ level = Random.Range(10,20) });
+            entityManager.SetSharedComponentData(entity, new RenderMesh{
+                mesh = mesh,
+                material = material
+            });
         }
         //要自己释放
         entityArray.Dispose();
