@@ -19,6 +19,7 @@ public class TestECSMono : MonoBehaviour
         //2.原型方式创建Entity
         EntityArchetype entityArchetype = entityManager.CreateArchetype(typeof(LevelComponent), typeof(Translation));
         Entity entity = entityManager.CreateEntity(entityArchetype);
+        entityManager.SetName(entity, "levelEntity");
 
         //给entity的对应组件赋值
         entityManager.SetComponentData(entity,new LevelComponent() { level=10});
