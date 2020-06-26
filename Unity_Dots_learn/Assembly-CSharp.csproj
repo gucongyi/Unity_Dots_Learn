@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Component\LevelComponent.cs" />
+    <Compile Include="Assets\Scripts\Component\MoveDirectionComponent.cs" />
     <Compile Include="Assets\Scripts\Component\MoveSpeedComponent.cs" />
     <Compile Include="Assets\Scripts\Mono\JobMutiThreadTest.cs" />
     <Compile Include="Assets\Scripts\Mono\JobParallelForTest.cs" />
