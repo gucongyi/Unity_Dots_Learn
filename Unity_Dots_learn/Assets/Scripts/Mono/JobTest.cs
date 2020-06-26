@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst;
 using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
@@ -49,6 +50,7 @@ public static class Helper
     }
 }
 
+[BurstCompile]
 public struct ReallyTouchJob : IJob
 {
     public void Execute()
