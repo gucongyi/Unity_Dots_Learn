@@ -766,6 +766,15 @@
     <Reference Include="Unity.Transforms.Hybrid">
       <HintPath>D:/WorkUnity/Unity_Dots_learn/Library/ScriptAssemblies/Unity.Transforms.Hybrid.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Physics">
+      <HintPath>D:/WorkUnity/Unity_Dots_learn/Library/ScriptAssemblies/Unity.Physics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Physics.Hybrid">
+      <HintPath>D:/WorkUnity/Unity_Dots_learn/Library/ScriptAssemblies/Unity.Physics.Hybrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Physics.Editor">
+      <HintPath>D:/WorkUnity/Unity_Dots_learn/Library/ScriptAssemblies/Unity.Physics.Editor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
