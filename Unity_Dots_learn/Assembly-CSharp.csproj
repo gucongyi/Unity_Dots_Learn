@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Component\LevelComponent.cs" />
     <Compile Include="Assets\Scripts\Component\MoveSpeedComponent.cs" />
+    <Compile Include="Assets\Scripts\Mono\JobMutiThreadTest.cs" />
     <Compile Include="Assets\Scripts\Mono\JobTest.cs" />
     <Compile Include="Assets\Scripts\Mono\TestECSMono.cs" />
     <Compile Include="Assets\Scripts\System\LevelUpSystem.cs" />
