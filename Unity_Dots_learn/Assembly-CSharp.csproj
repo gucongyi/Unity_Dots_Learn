@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Mono\TestECSMono.cs" />
     <Compile Include="Assets\Scripts\System\LevelUpSystem.cs" />
     <Compile Include="Assets\Scripts\System\MoveSystem.cs" />
+    <Compile Include="Assets\Scripts\System\PlayerMovementSystem.cs" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity2019.4.0/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
