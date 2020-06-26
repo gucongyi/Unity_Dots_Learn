@@ -4,7 +4,7 @@ using Unity.Entities;
 using UnityEngine;
 
 [GenerateAuthoringComponent]
-public class MoveDirectionComponent : IComponentData
+public struct MoveDirectionComponent : IComponentData
 {
     public float Value;
 }
